@@ -23,10 +23,10 @@ public class DriveTrain extends SubsystemBase {
         left_2 = new CANSparkMax(OperatorConstants.leftMotor2, MotorType.kBrushless);
     }
 
-    public void drive_with_controllerleft(XboxController XBOX_Left_Y) {
+    public void drive_with_controllerleft(XboxController xbox_controller) {
 
-        double forward = -XBOX_Left_Y.getRawAxis(0)*(OperatorConstants.YAxis); // Left stick Y-axis
-        double turn = XBOX_Left_Y.getRawAxis(0)*(OperatorConstants.XAxis);    // Right stick X-axis
+        double forward = -xbox_controller.getRawAxis(1)*(OperatorConstants.YAxis); // Left stick Y-axis
+        double turn = xbox_controller.getRawAxis(4)*(OperatorConstants.XAxis);    // Right stick X-axis
     
         // Scale inputs (optional, for fine-tuning)
         forward *= OperatorConstants.speed; // Scale forward/backward speed
@@ -36,13 +36,13 @@ public class DriveTrain extends SubsystemBase {
         double left = forward + turn;
     
         // Set motor speeds
-        left_1.set(-left);
+        left_1.set(left);
         left_2.set(left);
     }
 
-public void drive_with_controllerright(XboxController XBOX_Right_Y){
-     double forward = -XBOX_Right_Y.getRawAxis(4)*(OperatorConstants.YAxis); // Left stick Y-axis
-        double turn = XBOX_Right_Y.getRawAxis(4)*(OperatorConstants.XAxis);    // Right stick X-axis
+public void drive_with_controllerright(XboxController xbox_controller){
+     double forward = -xbox_controller.getRawAxis(1)*(OperatorConstants.YAxis); // Left stick Y-axis
+        double turn = xbox_controller.getRawAxis(4)*(OperatorConstants.XAxis);    // Right stick X-axis
     
         // Scale inputs (optional, for fine-tuning)
         forward *= OperatorConstants.speed; // Scale forward/backward speed
@@ -50,7 +50,7 @@ public void drive_with_controllerright(XboxController XBOX_Right_Y){
 
     double right = forward - turn;
 
-    right_1.set(right);
+    right_1.set(-right);
     right_2.set(-right);
 }
     }
