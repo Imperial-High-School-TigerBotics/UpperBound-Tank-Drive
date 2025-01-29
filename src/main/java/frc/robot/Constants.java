@@ -20,8 +20,8 @@ public final class Constants {
     public static final boolean isArcadeOperation = false;
 
     public static final int kDriverControllerPort = 0;
-    public static final int XBOX_Left_Y = 0;
-    public static final int XBOX_Left_X = 1;
+    public static final int XBOX_Left_Y = 1;
+    public static final int XBOX_Left_X = 0;
     public static final int XBOX_Right_X = 4;
     public static final int XBOX_Right_Y = 5;
 

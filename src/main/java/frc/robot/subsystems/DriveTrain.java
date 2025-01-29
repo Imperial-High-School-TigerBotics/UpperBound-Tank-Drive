@@ -48,8 +48,8 @@ public class DriveTrain extends SubsystemBase {
 
     public void drive_with_controller(XboxController xbox_controller) {
         if(OperatorConstants.isArcadeOperation){
-            double forward = -xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Left_Y); // Left stick Y-axis
-            double turn = xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Right_X);  // Right stick X-axis
+            double forward = -xbox_controller.getRawAxis(OperatorConstants.XBOX_Left_Y); // Left stick Y-axis
+            double turn = xbox_controller.getRawAxis(OperatorConstants.XBOX_Right_X);  // Right stick X-axis
         
             // Scale inputs (optional, for fine-tuning)
             forward *= OperatorConstants.speed; // Scale forward/backward speed
@@ -65,9 +65,9 @@ public class DriveTrain extends SubsystemBase {
 
             right_1.set(right);
             right_2.set(right);
-        }else if(OperatorConstats.isTankOperation){
-            double left = -xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Left_Y); // Left stick Y-axis
-            double right = -xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Right_Y);  // Right stick Y-axis
+        }else if(OperatorConstants.isTankOperation){
+            double left = -xbox_controller.getRawAxis(OperatorConstants.XBOX_Left_Y); // Left stick Y-axis
+            double right = -xbox_controller.getRawAxis(OperatorConstants.XBOX_Right_Y);  // Right stick Y-axis
         
             // Scale inputs (optional, for fine-tuning)
             left *= OperatorConstants.speed; // Scale forward/backward speed
@@ -77,8 +77,10 @@ public class DriveTrain extends SubsystemBase {
             left_1.set(left);
             left_2.set(left);
 
-            right_1.set(right);
-            right_2.set(right);
+            //right_1.set(right);
+            //right_2.set(right);
+
+            System.out.println("left; " + left + "Right" + right );
         }
     }
 }
