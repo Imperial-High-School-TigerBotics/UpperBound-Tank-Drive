@@ -37,7 +37,7 @@ public class DriveTrain extends SubsystemBase {
     
         // Set motor speeds
         left_1.set(-left);
-        left_2.set(-left);
+        left_2.set(left);
     }
 
 public void drive_with_controllerright(XboxController XBOX_Right_Y){
@@ -51,6 +51,6 @@ public void drive_with_controllerright(XboxController XBOX_Right_Y){
     double right = forward - turn;
 
     right_1.set(right);
-    right_2.set(right);
+    right_2.set(-right);
 }
     }
