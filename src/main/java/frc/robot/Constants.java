@@ -28,9 +28,6 @@ public final class Constants {
     public static final boolean leftReversed = false;
     public static final boolean rightReversed = false;
 
-    public static final int YAxis = 1;
-    public static final int XAxis = 0;
-
     public static final double speed = .5;
   }
 

@@ -17,8 +17,6 @@ public class DriveTrainCmd extends Command {
 
     @Override
     public void execute() {
-        drivetrain.drive_with_controllerleft(xbox);
-        drivetrain.drive_with_controllerright(xbox);
-
+        drivetrain.drive_with_controller(xbox);
     }
 }
