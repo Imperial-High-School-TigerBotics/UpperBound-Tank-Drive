@@ -21,26 +21,50 @@ public class DriveTrain extends SubsystemBase {
         right_2 = new CANSparkMax(OperatorConstants.rightMotor2, MotorType.kBrushless);
         left_1 = new CANSparkMax(OperatorConstants.leftMotor1, MotorType.kBrushless);
         left_2 = new CANSparkMax(OperatorConstants.leftMotor2, MotorType.kBrushless);
+
+        if (OperatorConstants.leftReversed) {
+            left_1.setInverted(true);
+            left_2.setInverted(true);
+        }else if (OperatorConstants.rightReversed) {
+            right_1.setInverted(true);
+            right_2.setInverted(true);
+        }
+
     }
 
     public void drive_with_controller(XboxController xbox_controller) {
+        if(OperatorConstants.isArcadeOperation){
+            double forward = -xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Left_Y); // Left stick Y-axis
+            double turn = xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Right_X);  // Right stick X-axis
+        
+            // Scale inputs (optional, for fine-tuning)
+            forward *= OperatorConstants.speed; // Scale forward/backward speed
+            turn *= OperatorConstants.speed;    // Scale turning speed
+        
+            // Calculate motor outputs
+            double left = forward + turn;
+            double right = forward - turn;
+        
+            // Set motor speeds
+            left_1.set(left);
+            left_2.set(left);
 
-        double forward = -xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Left_Y); // Left stick Y-axis
-        double turn = xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Right_X);  // Right stick X-axis
-    
-        // Scale inputs (optional, for fine-tuning)
-        forward *= OperatorConstants.speed; // Scale forward/backward speed
-        turn *= OperatorConstants.speed;    // Scale turning speed
-    
-        // Calculate motor outputs
-        double left = forward + turn;
-        double right = forward - turn;
-    
-        // Set motor speeds
-        left_1.set(left);
-        left_2.set(left);
+            right_1.set(right);
+            right_2.set(right);
+        }else if(OperatorConstats.isTankOperation){
+            double left = -xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Left_Y); // Left stick Y-axis
+            double right = -xbox_controller.getRawAxis(Constants.OperatorConstants.XBOX_Right_Y);  // Right stick Y-axis
+        
+            // Scale inputs (optional, for fine-tuning)
+            left *= OperatorConstants.speed; // Scale forward/backward speed
+            right *= OperatorConstants.speed;    // Scale turning speed
+        
+            // Set motor speeds
+            left_1.set(left);
+            left_2.set(left);
 
-        right_1.set(-right);
-        right_2.set(-right);
+            right_1.set(right);
+            right_2.set(right);
+        }
     }
 }

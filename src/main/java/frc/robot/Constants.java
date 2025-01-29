@@ -13,7 +13,12 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static class RobotConstants{}
   public static class OperatorConstants {
+
+    public static final boolean isTankOperation = false;
+    public static final boolean isArcadeOperation = true;
+
     public static final int kDriverControllerPort = 0;
     public static final int XBOX_Left_Y = 0;
     public static final int XBOX_Left_X = 1;
@@ -26,7 +31,7 @@ public final class Constants {
     public static final int leftMotor2 = 3;
 
     public static final boolean leftReversed = false;
-    public static final boolean rightReversed = false;
+    public static final boolean rightReversed = true;
 
     public static final double speed = .5;
   }
