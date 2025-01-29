@@ -25,8 +25,8 @@ public class DriveTrain extends SubsystemBase {
 
     public void drive_with_controllerleft(XboxController xbox_controller) {
 
-        double forward = -xbox_controller.getRawAxis(1)*(OperatorConstants.YAxis); // Left stick Y-axis
-        double turn = xbox_controller.getRawAxis(4)*(OperatorConstants.XAxis);    // Right stick X-axis
+        double forward = -xbox_controller.getRawAxis(1); // Left stick Y-axis
+        double turn = xbox_controller.getRawAxis(4);  // Right stick X-axis
     
         // Scale inputs (optional, for fine-tuning)
         forward *= OperatorConstants.speed; // Scale forward/backward speed
@@ -41,8 +41,8 @@ public class DriveTrain extends SubsystemBase {
     }
 
 public void drive_with_controllerright(XboxController xbox_controller){
-     double forward = -xbox_controller.getRawAxis(1)*(OperatorConstants.YAxis); // Left stick Y-axis
-        double turn = xbox_controller.getRawAxis(4)*(OperatorConstants.XAxis);    // Right stick X-axis
+     double forward = -xbox_controller.getRawAxis(1); // Left stick Y-axis
+        double turn = xbox_controller.getRawAxis(4);   // Right stick X-axis
     
         // Scale inputs (optional, for fine-tuning)
         forward *= OperatorConstants.speed; // Scale forward/backward speed
