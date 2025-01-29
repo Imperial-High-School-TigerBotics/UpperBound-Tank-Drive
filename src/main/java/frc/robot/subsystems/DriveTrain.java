@@ -25,9 +25,13 @@ public class DriveTrain extends SubsystemBase {
         if (OperatorConstants.leftReversed) {
             left_1.setInverted(true);
             left_2.setInverted(true);
+            right_1.setInverted(false);
+            right_2.setInverted(false);
         }else if(OperatorConstants.rightReversed){
             right_1.setInverted(true);
             right_2.setInverted(true);
+            left_1.setInverted(false);
+            left_2.setInverted(false);
         }else if(OperatorConstants.leftReversed && OperatorConstants.rightReversed){
             left_1.setInverted(true);
             left_2.setInverted(true);
