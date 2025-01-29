@@ -22,27 +22,11 @@ public class DriveTrain extends SubsystemBase {
         left_1 = new CANSparkMax(OperatorConstants.leftMotor1, MotorType.kBrushless);
         left_2 = new CANSparkMax(OperatorConstants.leftMotor2, MotorType.kBrushless);
 
-        if (OperatorConstants.leftReversed) {
-            left_1.setInverted(true);
-            left_2.setInverted(true);
-            right_1.setInverted(false);
-            right_2.setInverted(false);
-        }else if(OperatorConstants.rightReversed){
-            right_1.setInverted(true);
-            right_2.setInverted(true);
-            left_1.setInverted(false);
-            left_2.setInverted(false);
-        }else if(OperatorConstants.leftReversed && OperatorConstants.rightReversed){
-            left_1.setInverted(true);
-            left_2.setInverted(true);
-            right_1.setInverted(true);
-            right_2.setInverted(true);
-        }else{
-            left_1.setInverted(false);
-            left_2.setInverted(false);
-            right_1.setInverted(false);
-            right_2.setInverted(false);
-        }
+        left_1.setInverted(OperatorConstants.leftReversed);
+        left_2.setInverted(OperatorConstants.leftReversed);
+
+        right_1.setInverted(OperatorConstants.rightReversed);
+        right_2.setInverted(OperatorConstants.rightReversed);
 
     }
 
