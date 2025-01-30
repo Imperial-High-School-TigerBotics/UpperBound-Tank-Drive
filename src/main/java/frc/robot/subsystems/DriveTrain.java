@@ -30,6 +30,14 @@ public class DriveTrain extends SubsystemBase {
 
     }
 
+    private double applyDeadzone(double value, double deadzone) {
+        if (Math.abs(value) > deadzone) {
+            return value; // Keep values outside the deadzone
+        } else {
+            return 0.0; // Set values inside the deadzone to zero
+        }
+    }
+
     public void drive_with_controller(XboxController xbox_controller) {
         if(OperatorConstants.isArcadeOperation){
             double forward = -xbox_controller.getRawAxis(OperatorConstants.XBOX_Right_X); // Left stick Y-axis
@@ -38,6 +46,10 @@ public class DriveTrain extends SubsystemBase {
             // Scale inputs (optional, for fine-tuning)
             forward *= OperatorConstants.speed; // Scale forward/backward speed
             turn *= OperatorConstants.speed;    // Scale turning speed
+
+                // Apply deadzone
+            forward = applyDeadzone(forward, 0.09);
+            turn = applyDeadzone(turn, 0.09);
         
             // Calculate motor outputs
             double left = forward + turn;

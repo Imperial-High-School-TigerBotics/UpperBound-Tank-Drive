@@ -34,6 +34,10 @@ public final class Constants {
     public static final boolean rightReversed = false;
 
     public static final double speed = .75;
+
+    public static final double deadzone = 0.09;
+
+  
   }
 
 }
